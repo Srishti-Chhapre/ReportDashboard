@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales and Revenue Reports</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="dashboard">
+        <header id="dashboardHeader">
+            <div class="headerContainer">
+                <div class="headerHeadingContainer">
+                    <div class="dashboardHeaderPieChart">
+                        <canvas id="consultationChart"></canvas>
+                    </div>
+                    <div class="dashboardHeader">
+                        <h1>Sales and Revenue Reports</h1>
+                        <h5>STATISTICAL GRAPH</h5>
+                    </div>
+                </div>
+                <div class="dashboardReportYearContainer">
+                    <span>2024</span>
+                </div>
+            </div>
+
+        </header>
+        <main>
+            <div class="dashboardChartsContainer">
+                <div class="chartBoxContainer">
+                    <div class="chart-box">
+
+                        <h2>Monthly Sales Revenue</h2>
+                        <p>Monthly breakdown of sales revenue.</p>
+                        <!-- Monthly Sales Revenue -->
+                        <div class="chart-container sales-revenue">
+
+                            <canvas id="salesRevenueChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Team Conversion Rate -->
+                    <div class="chart-box">
+                        <h2>Team Conversion Rate</h2>
+                        <div class="chart-container chart-box-semiDoughnutContainer">
+                            <div class="semiDoughnutContainer">
+                                <div class="semi-donut margin" style="--percentage : 80; --fill: #21CE80 ;">
+                                    <div>
+                                        <span>25%</span>
+
+                                    </div>
+                                </div>
+                                <div class="nameContainer">
+                                    <span>Raj Kumar</span>
+                                </div>
+                            </div>
+                            <div class="semiDoughnutContainer">
+                                <div class="semi-donut margin" style="--percentage : 80; --fill: #21CE80 ;">
+                                    <div>
+                                        <span>25%</span>
+
+                                    </div>
+                                </div>
+                                <div class="nameContainer">
+                                    <span>Raj Kumar</span>
+                                </div>
+                            </div>
+                            <div class="semiDoughnutContainer">
+                                <div class="semi-donut margin" style="--percentage : 80; --fill: #21CE80 ;">
+                                    <div>
+                                        <span>25%</span>
+
+                                    </div>
+                                </div>
+                                <div class="nameContainer">
+                                    <span>Raj Kumar</span>
+                                </div>
+                            </div>
+                            <div class="semiDoughnutContainer">
+                                <div class="semi-donut margin" style="--percentage : 80; --fill: #21CE80 ;">
+                                    <div>
+                                        <span>25%</span>
+
+                                    </div>
+                                </div>
+                                <div class="nameContainer">
+                                    <span>Raj Kumar</span>
+                                </div>
+                            </div>
+                            <div class="semiDoughnutContainer">
+                                <div class="semi-donut margin" style="--percentage : 80; --fill: #21CE80 ;">
+                                    <div>
+                                        <span>25%</span>
+
+                                    </div>
+                                </div>
+                                <div class="nameContainer">
+                                    <span>Raj Kumar</span>
+                                </div>
+                            </div>
+                            <div class="semiDoughnutContainer">
+                                <div class="semi-donut margin" style="--percentage : 80; --fill: #21CE80 ;">
+                                    <div>
+                                        <span>25%</span>
+
+                                    </div>
+                                </div>
+                                <div class="nameContainer">
+                                    <span>Raj Kumar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Monthly Consultation Report -->
+                    <div class="chart-box">
+                        <h2>Monthly Consultation Report</h2>
+                        <div class="chart-container">
+
+                            <canvas id="consultationReportChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Progress Report -->
+
+                <div class="teamProgressReportContainer">
+                    <h1>Team Progress Report</h1>
+                    <canvas id="horizontalBarChart"></canvas>
+                </div>
+            </div>
+            <table class="dashboardTable">
+                <thead>
+                    <tr>
+                        <th>Headline</th>
+                        <th>Abhi</th>
+                        <th>Raj</th>
+                        <th>Riya</th>
+                        <th>Viren</th>
+                        <th>Rajesh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Meeting Recived</td>
+                        <td>5</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Total Meeting Done</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>Deal Close</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>Meeting Repeated</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>In-Coreect Meeting</td>
+                        <td>5</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>Non Hindi Language</td>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+</body>
+
+</html>
