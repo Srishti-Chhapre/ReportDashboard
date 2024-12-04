@@ -52,51 +52,43 @@ function drawChart() {
 
 // Team Conversion Rate Chart
 
-
 // Monthly Consultation Report Chart
 
-const consultationReportCtx = document.getElementById('consultationReportChart').getContext('2d');
-new Chart(consultationReportCtx, {
-    type: 'pie',
-    data: {
-        labels: ['Total Appointment', 'Meeting Not Done', 'Deal Closing', 'Total Meeting Done'],
-        datasets: [{
-            data: [30, 30, 40, 50], // Data percentages
-            backgroundColor: ['#2DB488', '#DB9942', '#E65695', '#605DC8'], // Colors: Green, Yellow, Pink, Purple
-            borderWidth: 0, // No border around the segments
-            
-        }]
-    },
-    options: {
-        responsive: true,
-        hover: {
-            mode: null
-          },
-        plugins: {
-            legend: {
-                position: 'bottom', // Position the legend at the bottom
-                align: 'start', // Align labels to the left
-                labels: {
-                    color: '#B8B8B8', // Set label color
-                    usePointStyle: false,
-                    padding: 20, // Adjust padding between legend items
-                    boxWidth: 16, // Set legend box width
-                    font: {
-                        size: 14, // Adjust font size
-                    },
-                },
+google.charts.load('current', { packages: ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    const data = google.visualization.arrayToDataTable([
+        ['Category', 'Value'], // Chart labels and data
+        ['Total Appointment', 30],
+        ['Meeting Not Done', 30],
+        ['Deal Closing', 40],
+        ['Total Meeting Done', 50]
+    ]);
+
+    const options = {
+        pieHole: 0, // Create a pie chart (not a donut)
+        backgroundColor: 'transparent', // Transparent background
+        chartArea: { width: '85%', height: '75%' }, // Adjust chart area
+        colors: ['#2DB488', '#DB9942', '#E65695', '#605DC8'], // Segment colors
+        legend: {
+            position: 'bottom', // Place legend at the bottom
+            textStyle: {
+                color: '#B8B8B8', // Legend label color
+                fontSize: 14 // Font size for legend labels
             },
-            tooltip: {
-                enabled: true, // Enable tooltips for better user interaction
-            }
+            alignment: 'start' // Align legend to the left
         },
-        layout: {
-            padding: {
-                bottom: 20, // Add padding below the chart to prevent overlap
-            },
-        }
-    }
-});
+        tooltip: {
+            trigger: 'focus' // Enable tooltips for interactivity
+        },
+        pieSliceBorderColor: 'none', // No border around slices
+        pieSliceText: 'none', // Remove text on slices
+    };
+
+    const chart = new google.visualization.PieChart(document.getElementById('consultationReportChart'));
+    chart.draw(data, options);
+}
 
 
 //Team Progress Report
