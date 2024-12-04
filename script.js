@@ -17,50 +17,37 @@ new Chart(consultationCtx, {
 
 
 // Monthly Sales Revenue Chart
-const salesRevenueCtx = document.getElementById('salesRevenueChart').getContext('2d');
-new Chart(salesRevenueCtx, {
-    type: 'bar',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-        datasets: [{
-            label: 'Sales (Lakhs)',
-            data: [10, 50, 100, 150, 200],
-            backgroundColor: '#7A55D9',
-            borderRadius:3,
-        }]
-    },
-    options: {
-        responsive: true,
-        hover: {
-            mode: null
-          },
-        plugins: {
-            legend: { display: false },
-            tooltip: { enabled: false}
+google.charts.load('current', { packages: ['corechart'] });
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    const data = google.visualization.arrayToDataTable([
+        ['Month', 'Sales (Lakhs)', { role: 'style' },{ role: 'annotation' }],
+        ['Jan', 30, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Feb', 50, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Mar', 100, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Apr', 150, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['May', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs']
+    ]);
+
+    const options = {
+        backgroundColor: 'transparent', // Remove background color
+        legend: { position: 'none' }, // Remove legend
+        chartArea: { width: '85%', height: '75%' }, // Adjust chart area
+        hAxis: {
+            textStyle: { color: '#B8B8B8' },
+            gridlines: { color: 'none' }, // Remove gridlines on x-axis
         },
-        scales: {
-            x: {
-                ticks: {
-                    color: '#B8B8B8',
-                    padding: 10 , 
-                },
-                grid: {
-                    drawOnChartArea: false,
-                }
-            },
-            y: {
-                ticks: {
-                    color: '#B8B8B8',
-                    padding: 10 ,  
-                },
-                grid: {
-                    color: '#3D3D3D',
-                     
-                }
-            }
-        }
-    }
-});
+        vAxis: {
+            textStyle: { color: '#B8B8B8' },
+            gridlines: { color: '#3D3D3D' }, // Add gridlines on y-axis
+        },
+        bar: { groupWidth: '70%' } // Set bar width
+    };
+
+    const chart = new google.visualization.ColumnChart(document.getElementById('salesRevenueChart'));
+    chart.draw(data, options);
+}
 
 
 // Team Conversion Rate Chart
