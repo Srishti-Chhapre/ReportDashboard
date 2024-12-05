@@ -18,9 +18,9 @@ new Chart(consultationCtx, {
 
 // Monthly Sales Revenue Chart
 google.charts.load('current', { packages: ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawSalesRevenueChart);
 
-function drawChart() {
+function drawSalesRevenueChart() {
     const data = google.visualization.arrayToDataTable([
         ['Month', 'Sales (Lakhs)', { role: 'style' },{ role: 'annotation' }],
         ['Jan', 30, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
@@ -31,18 +31,18 @@ function drawChart() {
     ]);
 
     const options = {
-        backgroundColor: 'transparent', // Remove background color
-        legend: { position: 'none' }, // Remove legend
-        chartArea: { width: '85%', height: '75%' }, // Adjust chart area
+        backgroundColor: 'transparent',
+        legend: { position: 'none' },
+        chartArea: { width: '85%', height: '75%' },
         hAxis: {
             textStyle: { color: '#B8B8B8' },
-            gridlines: { color: 'none' }, // Remove gridlines on x-axis
+            gridlines: { color: 'none' },
         },
         vAxis: {
             textStyle: { color: '#B8B8B8' },
-            gridlines: { color: '#3D3D3D' }, // Add gridlines on y-axis
+            gridlines: { color: '#3D3D3D' },
         },
-        bar: { groupWidth: '70%' } // Set bar width
+        bar: { groupWidth: '70%' }
     };
 
     const chart = new google.visualization.ColumnChart(document.getElementById('salesRevenueChart'));
@@ -53,13 +53,11 @@ function drawChart() {
 // Team Conversion Rate Chart
 
 // Monthly Consultation Report Chart
+google.charts.setOnLoadCallback(drawConsultationChart);
 
-google.charts.load('current', { packages: ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
+function drawConsultationChart() {
     const data = google.visualization.arrayToDataTable([
-        ['Category', 'Value'], // Chart labels and data
+        ['Category', 'Value'],
         ['Total Appointment', 30],
         ['Meeting Not Done', 30],
         ['Deal Closing', 40],
@@ -67,24 +65,43 @@ function drawChart() {
     ]);
 
     const options = {
-        pieHole: 0, // Create a pie chart (not a donut)
-        backgroundColor: 'transparent', // Transparent background
-        chartArea: { width: '85%', height: '75%' }, // Adjust chart area
-        colors: ['#2DB488', '#DB9942', '#E65695', '#605DC8'], // Segment colors
+        pieHole: 0,
+        backgroundColor: 'transparent',
+        chartArea: { 
+            left: 20,
+            top: 20,
+            width: '100%',
+            height: '65%'
+        },
+        colors: ['#2DB488', '#DB9942', '#E65695', '#605DC8'],
         legend: {
-            position: 'bottom', // Place legend at the bottom
+            position: 'bottom',
             textStyle: {
-                color: '#B8B8B8', // Legend label color
-                fontSize: 14 // Font size for legend labels
+                color: '#B8B8B8',
+                fontSize: 14
             },
-            alignment: 'start' // Align legend to the left
+            maxLines: 4,
+            alignment: 'start',
+            textPosition: 'start',
+            pageSize: 4
         },
         tooltip: {
-            trigger: 'focus' // Enable tooltips for interactivity
+            trigger: 'focus'
         },
-        pieSliceBorderColor: 'none', // No border around slices
-        pieSliceText: 'none', // Remove text on slices
+        pieSliceBorderColor: 'none',
+        pieSliceText: 'percentage',
+        pieSliceTextStyle: {
+            color: 'white',
+            fontSize: 14,
+            fontWeight: 'bold'
+        }
     };
+
+    for (let i = 0; i < data.getNumberOfRows(); i++) {
+        let label = data.getValue(i, 0);
+        let value = data.getValue(i, 1);
+        data.setValue(i, 0, `${label} (${value})`);
+    }
 
     const chart = new google.visualization.PieChart(document.getElementById('consultationReportChart'));
     chart.draw(data, options);
@@ -96,53 +113,52 @@ const ctx = document.getElementById('horizontalBarChart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Product A', 'Product B', 'Product C', 'Product D'], // Labels for each bar
+        labels: ['Product A', 'Product B', 'Product C', 'Product D'],
         datasets: [{
-            data: [6, 8, 4, 7], // Data values
-            backgroundColor: '#21CE80 ', // Green color
-            borderColor: '#388E3C', // Slightly darker green for border
+            data: [6, 8, 4, 7],
+            backgroundColor: '#21CE80 ',
+            borderColor: '#388E3C',
             borderWidth: 0,
-            borderRadius: 3, // Rounded bar edges
+            borderRadius: 3,
         }]
     },
     options: {
         hover: {
-            mode: null // Disable hover effect
+            mode: null
         },
-        indexAxis: 'y', // Makes the chart horizontal
+        indexAxis: 'y',
         responsive: true,
         plugins: {
             legend: {
-                display: false // Hides the legend
+                display: false
             },
             datalabels: {
-                color: '#fff', // Label color (white)
+                color: '#fff',
                 font: {
-                    weight: 'bold', // Bold font style
-                    size: 14 // Font size for labels
+                    weight: 'bold',
+                    size: 14
                 },
-                align: 'center', // Center the label inside the bars
-                anchor: 'center', // Center anchor point for labels
+                align: 'center',
+                anchor: 'center',
             }
         },
         scales: {
             x: {
                 grid: {
-                    color: '#3B3B3B' // Gridline color
+                    color: '#3B3B3B'
                 },
                 ticks: {
                     color: '#B8B8B8',
-                    // Custom tick values
-                    stepSize: 2, // Ensures we divide the axis by 2
-                    min: 0, // Start from 0
-                    max: 8, // End at 8
+                    stepSize: 2,
+                    min: 0,
+                    max: 8,
                     callback: function(value) {
                         if (value === 0 || value === 2 || value === 4 || value === 6 || value === 8) {
                             return value;
                         }
                     }
                 },
-                beginAtZero: true // Start axis at zero
+                beginAtZero: true
             },
             y: {
                 grid: {
