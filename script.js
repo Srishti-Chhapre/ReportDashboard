@@ -27,7 +27,14 @@ function drawSalesRevenueChart() {
         ['Feb', 50, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
         ['Mar', 100, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
         ['Apr', 150, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
-        ['May', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs']
+        ['May', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['June', 100, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['July', 150, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Aug', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Sep', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Oct', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Nov', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs'],
+        ['Dec', 200, 'color: #7A55D9; stroke-width: 0;','7 Lakhs']
     ]);
 
     const options = {
@@ -42,7 +49,7 @@ function drawSalesRevenueChart() {
             textStyle: { color: '#B8B8B8' },
             gridlines: { color: '#3D3D3D' },
         },
-        bar: { groupWidth: '70%' }
+        bar: { groupWidth: '100%' }
     };
 
     const chart = new google.visualization.ColumnChart(document.getElementById('salesRevenueChart'));
@@ -70,20 +77,17 @@ function drawConsultationChart() {
         chartArea: { 
             left: 20,
             top: 20,
-            width: '100%',
-            height: '65%'
+            width: '100%', 
+            height: '70%'  // Leave space for the legend
         },
         colors: ['#2DB488', '#DB9942', '#E65695', '#605DC8'],
         legend: {
-            position: 'bottom',
+            position: 'bottom', // Legend below the chart
+            alignment: 'center', // Center the legend
             textStyle: {
                 color: '#B8B8B8',
                 fontSize: 14
-            },
-            maxLines: 4,
-            alignment: 'start',
-            textPosition: 'start',
-            pageSize: 4
+            }
         },
         tooltip: {
             trigger: 'focus'
@@ -96,6 +100,8 @@ function drawConsultationChart() {
             fontWeight: 'bold'
         }
     };
+    
+    
 
     for (let i = 0; i < data.getNumberOfRows(); i++) {
         let label = data.getValue(i, 0);
