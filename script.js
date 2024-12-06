@@ -40,7 +40,7 @@ function drawSalesRevenueChart() {
     const options = {
         backgroundColor: 'transparent',
         legend: { position: 'none' },
-        chartArea: { width: '85%', height: '75%' },
+        chartArea: { width: '100%', height: '90%' },
         hAxis: {
             textStyle: { color: '#B8B8B8' },
             gridlines: { color: 'none' },
@@ -49,7 +49,7 @@ function drawSalesRevenueChart() {
             textStyle: { color: '#B8B8B8' },
             gridlines: { color: '#3D3D3D' },
         },
-        bar: { groupWidth: '100%' }
+        bar: { groupWidth: '93%' }
     };
 
     const chart = new google.visualization.ColumnChart(document.getElementById('salesRevenueChart'));
