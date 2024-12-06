@@ -93,6 +93,9 @@ header {
   gap: 4rem;
   justify-content: center;
 }
+.dashboardChartsSecondContainer{
+  align-items: center;
+}
 main {
   display: flex;
   flex-direction: column;
@@ -116,6 +119,8 @@ main {
   justify-content: center;
   align-items: center;
   gap: 1.8rem;
+}
+.sales-revenue{
   overflow: auto;
 }
 
@@ -153,6 +158,9 @@ main {
   margin: 0px;
   white-space: nowrap;
 }
+.firstChartBoxContainer{
+  width: 50%;
+}
 .semiDoughnutContainer {
   width: fit-content;
 }
@@ -172,7 +180,7 @@ main {
   color: #b4b4b4;
 }
 #salesRevenueChart{
-  width: 100%;
+  width: 85%;
   height: 100%;
 }
 .semi-donut {
